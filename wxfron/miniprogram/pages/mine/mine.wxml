@@ -30,7 +30,7 @@
   </view>
   <view class="zan-cell zan-cell--access" bindtap="showAboutWechat">
     <view class="zan-cell__hd"></view>
-    <view class="zan-cell__bd">关于Bug生活2048</view>
+    <view class="zan-cell__bd">关于Bug生活2048-new</view>
     <view class="zan-cell__ft"></view>
   </view>
     <view>
