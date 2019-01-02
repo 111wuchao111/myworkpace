@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/mine/mine",
-    "pages/topic/topic",
     "pages/detail/detail",
     "pages/collected/collected",
     "pages/about/about_wechat",
@@ -26,12 +25,6 @@
         "iconPath": "images/tabbar/home.png",
         "selectedIconPath": "images/tabbar/home_click.png",
         "text": "首页"
-      },
-      {
-        "pagePath": "pages/topic/topic",
-        "iconPath": "images/tabbar/like.png",
-        "selectedIconPath": "images/tabbar/like_click.png",
-        "text": "专题"
       },
       {
         "pagePath": "pages/mine/mine",
