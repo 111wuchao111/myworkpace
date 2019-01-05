@@ -10,12 +10,14 @@ App({
     if (that.globalData.userInfo) {
       typeof cb == "function" && cb(that.globalData.userInfo, true);
     } else {
+      console.log('begin to get user setting')
       wx.getSetting({
         success: function(res) {
           if (res.authSetting['scope.userInfo']) {
             // 已经授权，可以直接调用 getUserInfo 获取头像昵称
             wx.getUserInfo({
               success: function(res) {
+                console.log(333333)
                 that.globalData.userInfo = JSON.parse(res.rawData);
                 typeof cb == "function" && cb(that.globalData.userInfo, true);
               }

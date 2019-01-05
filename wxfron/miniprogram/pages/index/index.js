@@ -31,7 +31,7 @@ Page({
     if (!that.data.lowerComplete) {
       return;
     }
-    if (!that.data.nomore &&!that.data.nodata) {
+    if (!that.data.nomore && !that.data.nodata) {
       that.setData({
         loading: true,
         lowerComplete: false
@@ -70,13 +70,13 @@ Page({
   getData: function () {
     let that = this;
     let page = that.data.page;
-    var query={
+    var query = {
       limit: 10,
       page: page + 1,
       fields: 'id,title,custom_excerpt,created_at,slug'
     }
     var getPostsRequest = wxRequest.getRequest(api.getBlogList(query));
-    getPostsRequest.then(res=>{
+    getPostsRequest.then(res => {
 
       if (res.data.meta.pagination.next == null) {
         that.setData({
@@ -90,8 +90,6 @@ Page({
       });
 
       const posts = res.data.posts;
-      var postIds = [];
-      posts.forEach(function (v) { postIds.push(v.id); });
       for (var post of posts) {
         var time = util.formatTime(post.created_at);
         post.created_at = time;
@@ -103,7 +101,7 @@ Page({
       this.setData({
         posts: this.data.posts.concat(posts),
       })
-      
+
     })
   }
 })

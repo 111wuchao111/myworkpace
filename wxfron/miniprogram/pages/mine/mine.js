@@ -56,6 +56,7 @@ Page({
     console.log(e.detail.userInfo)
     if (e.detail.userInfo) {
       app.globalData.userInfo = e.detail.userInfo
+      console.log(1111)
       this.setData({
         showPopup: !this.data.showPopup,
         userInfo: e.detail.userInfo
@@ -71,6 +72,7 @@ Page({
    * 返回
    */
   navigateBack: function(e) {
+    //界面切换到某个tab
     wx.switchTab({
       url: '../index/index'
     })
