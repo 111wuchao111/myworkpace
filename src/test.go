@@ -1,7 +1,9 @@
 package main
 
-import "github.com/astaxie/beego"
+//import "github.com/astaxie/beego"
+import "fmt"
 
 func main() {
-	beego.Run()
+	//beego.Run()
+	fmt.Println("success")
 }
