@@ -72,7 +72,7 @@ Page({
     // 2.默认值初始化
     let blogId = options.blogId;
     that.setData({
-      author: "添加稻草人",
+      author: "玄冰",
       iconContact: "contact",
       iconColock: "clock"
     })
@@ -466,8 +466,6 @@ Page({
     }
     var getPostsRequest = wxRequest.getRequest(api.getBlogById(query));
     getPostsRequest.then(res => {
-
-
       var post = res.data.posts[0];
       var slug = post.slug + '.jpg'
       var time = util.formatTime(post.created_at);
