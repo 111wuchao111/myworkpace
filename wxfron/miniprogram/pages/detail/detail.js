@@ -493,7 +493,10 @@ Page(Object.assign({}, Zan.Toast, Zan.Dialog, {
 
       })
       */
-
+      this.setData({
+        post: post,
+        slug: slug
+      });
       WxParse.wxParse('article', 'html', post.html, that, 5);
 
       //最近浏览
