@@ -7,7 +7,7 @@
   5. 【解决】详情页底部设计，评论怎么接（ghost目前没有支持评论）
  **/
 
-const Zan = require('../../dist/index');
+//const Zan = require('../../dist/index');
 const WxParse = require('../../wxParse/wxParse.js');
 const util = require('../../utils/util.js');
 const api = require('../../utils/api.js');
@@ -17,7 +17,7 @@ const app = getApp();
 var recentUrl = '';
 let isFocusing = false;
 
-Page(Object.assign({}, Zan.Toast, Zan.Dialog, {
+Page({
 
   /**
    * 页面的初始数据
@@ -72,7 +72,7 @@ Page(Object.assign({}, Zan.Toast, Zan.Dialog, {
     // 2.默认值初始化
     let blogId = options.blogId;
     that.setData({
-      author: "玄冰",
+      author: "添加稻草人",
       iconContact: "contact",
       iconColock: "clock"
     })
@@ -468,7 +468,7 @@ Page(Object.assign({}, Zan.Toast, Zan.Dialog, {
     getPostsRequest.then(res => {
 
 
-      const post = res.data.posts[0];
+      var post = res.data.posts[0];
       var slug = post.slug + '.jpg'
       var time = util.formatTime(post.created_at);
       post.created_at = time;
@@ -726,4 +726,4 @@ Page(Object.assign({}, Zan.Toast, Zan.Dialog, {
       urls: [this.data.showPosterImage],
     });
   },
-}));
+});
