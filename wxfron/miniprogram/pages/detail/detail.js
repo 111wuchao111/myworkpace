@@ -72,7 +72,7 @@ Page({
     // 2.默认值初始化
     let blogId = options.blogId;
     that.setData({
-      author: "玄冰",
+      author: "田间稻草人",
       iconContact: "contact",
       iconColock: "clock"
     })
