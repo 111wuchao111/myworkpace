@@ -1,4 +1,4 @@
-const apiURL = 'localhost';
+const apiURL = 'http://localhost:8081';
 const clientId = 'ghost-frontend';
 const clientSecret = 'ed4c807905b8';
 
@@ -35,7 +35,7 @@ const wxRequest = (params, url) => {
  * 分页获取文章列表url
  */
 const getBlogList = (params) => {
-  var url= `${apiURL}/posts?page=${params.page}&limit=${params.limit}&client_id=ghost-frontend&client_secret=ed4c807905b8&fields=${params.fields}`;
+  var url= `${apiURL}/?page=${params.page}&limit=${params.limit}&client_id=ghost-frontend&client_secret=ed4c807905b8&fields=${params.fields}`;
   return url
 };
 
