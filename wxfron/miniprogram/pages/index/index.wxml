@@ -15,7 +15,7 @@
         <image mode="widthFix" style="width: 100%;" data-index="{{idx}}" binderror="errorloadImage" src="{{item.slug}}"></image>
       </view>
       <view class="zan-font-12 zan-ellipsis--l3" bindtap="bindItemTap">
-        <text>{{item.custom_excerpt}}</text>
+        <text>{{item.sub_title}}</text>
       </view>
       <view class="tag-body">
         <view class="tag-actions" bindtap="bindItemTap">
