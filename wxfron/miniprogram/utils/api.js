@@ -1,4 +1,4 @@
-const apiURL = 'https://www.bug2048.com/ghost/api/v0.1';
+const apiURL = 'localhost';
 const clientId = 'ghost-frontend';
 const clientSecret = 'ed4c807905b8';
 
