@@ -43,7 +43,7 @@ const getBlogList = (params) => {
  * 根据文章Id获取文章信息
  */
 const getBlogById = (params) => {
-  var url = `${apiURL}/posts/${params.blogId}?client_id=${clientId}&client_secret=${clientSecret}`;
+  var url = `${apiURL}/detail/${params.blogId}?client_id=${clientId}&client_secret=${clientSecret}`;
   return url;
 };
 

@@ -8,7 +8,5 @@ import (
 
 func init() {
 	beego.Router("/", &controllers.ArticleController{}, "get:IndexList")
-	beego.Router("/subject/?:id", &controllers.ArticleController{}, "get:SubjectList")
-	beego.Router("/class", &controllers.ArticleClassController{}, "get:Get")
-	beego.Router("/comment/:id", &controllers.CommentController{})
+	beego.Router("/detail/?:id", &controllers.ArticleController{}, "get:Detail")
 }

@@ -467,11 +467,11 @@ Page({
     var getPostsRequest = wxRequest.getRequest(api.getBlogById(query));
     getPostsRequest.then(res => {
       var post = res.data.posts[0];
-      var slug = post.slug + '.jpg'
-      var time = util.formatTime(post.created_at);
+      var slug = post.icon + '.jpg'
+      var time = post.create_time;
       post.created_at = time;
-      recentUrl = getApp().globalData.imageUrl + post.slug + '.jpg?' + getApp().globalData.imageStyle200To200;
-      post.slug = getApp().globalData.imageUrl + post.slug + '.jpg?' + getApp().globalData.imageStyle600To300;
+      recentUrl = getApp().globalData.imageUrl + post.icon + '.jpg?' + getApp().globalData.imageStyle200To200;
+      post.slug = getApp().globalData.imageUrl + post.icon + '.jpg?' + getApp().globalData.imageStyle600To300;
       post.view_count = 100;
       post.comment_count = 0;
       post.like_count = 11;
@@ -495,7 +495,7 @@ Page({
         post: post,
         slug: slug
       });
-      WxParse.wxParse('article', 'html', post.html, that, 5);
+      WxParse.wxParse('article', 'html', post.content, that, 5);
 
       //最近浏览
       that.operatePostsRecent(post, recentUrl)

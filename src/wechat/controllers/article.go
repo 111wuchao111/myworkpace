@@ -55,12 +55,17 @@ func (this *ArticleController) IndexList() {
 
 	this.Data["json"] = map[string]interface{}{"success": 0, "posts": result.Posts, "meta": result.Meta}
 	this.ServeJSON()
-	return
 }
 
-//专题列表
-func (this *ArticleController) SubjectList() {
-	this.Data["json"] = map[string]interface{}{"success": 0, "message": "22222"}
+//获取文章详情
+func (this *ArticleController) Detail() {
+	var article []*models.Article
+	var result Result
+	o := orm.NewOrm()
+	id := this.Ctx.Input.Param(":id")
+	o.QueryTable("article").Filter("id", id).All(&article)
+	result.Posts = article
+	this.Data["json"] = map[string]interface{}{"success": 0, "posts": result.Posts}
+
 	this.ServeJSON()
-	return
 }
