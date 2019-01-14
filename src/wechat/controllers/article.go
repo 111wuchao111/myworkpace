@@ -59,13 +59,13 @@ func (this *ArticleController) IndexList() {
 
 //获取文章详情
 func (this *ArticleController) Detail() {
-	var article []*models.Article
-	var result Result
+	var article models.Article
+	//var result Result
 	o := orm.NewOrm()
 	id := this.Ctx.Input.Param(":id")
-	o.QueryTable("article").Filter("id", id).All(&article)
-	result.Posts = article
-	this.Data["json"] = map[string]interface{}{"success": 0, "posts": result.Posts}
+	o.QueryTable("article").Filter("id", id).One(&article)
+	//result.Posts = article
+	this.Data["json"] = map[string]interface{}{"success": 0, "data": article}
 
 	this.ServeJSON()
 }

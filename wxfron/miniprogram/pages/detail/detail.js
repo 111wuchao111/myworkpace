@@ -466,14 +466,12 @@ Page({
     }
     var getPostsRequest = wxRequest.getRequest(api.getBlogById(query));
     getPostsRequest.then(res => {
-      var post = res.data.posts[0];
+      var post = res.data.data;
       var slug = post.icon + '.jpg'
       var time = post.create_time;
       post.created_at = time;
       recentUrl = getApp().globalData.imageUrl + post.icon + '.jpg?' + getApp().globalData.imageStyle200To200;
       post.slug = getApp().globalData.imageUrl + post.icon + '.jpg?' + getApp().globalData.imageStyle600To300;
-      post.view_count = 100;
-      post.comment_count = 0;
       post.like_count = 11;
 
 /*
