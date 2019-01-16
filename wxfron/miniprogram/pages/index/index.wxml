@@ -12,7 +12,7 @@
         <text>{{item.title}}</text>
       </view>
       <view style='margin-top:10px;text-align: center'>
-        <image mode="widthFix" style="width: 100%;" data-index="{{idx}}" binderror="errorloadImage" src="{{item.slug}}"></image>
+        <image mode="widthFix" style="width: 100%;" data-index="{{idx}}" binderror="errorloadImage" src="{{item.icon}}"></image>
       </view>
       <view class="zan-font-12 zan-ellipsis--l3" bindtap="bindItemTap">
         <text>{{item.sub_title}}</text>

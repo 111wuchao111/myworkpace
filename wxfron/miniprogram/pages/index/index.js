@@ -58,7 +58,7 @@ Page({
     if (e.type == "error") {
       var index = e.target.dataset.index
       var posts = this.data.posts
-      posts[index].slug = this.data.defaultImageUrl
+      posts[index].icon = this.data.defaultImageUrl
       this.setData({
         posts: posts
       })
@@ -90,9 +90,6 @@ Page({
       });
 
       const posts = res.data.posts;
-      for (var post of posts) {
-        post.slug = app.globalData.imageUrl + post.slug + '.jpg?' + app.globalData.imageStyle600To300;
-      }
       this.setData({
         posts: this.data.posts.concat(posts),
       })

@@ -312,7 +312,7 @@ Page({
   errorloadImage: function(e) {
     if (e.type == "error") {
       var post = this.data.post
-      post.slug = this.data.defaultImageUrl
+      post.icon = this.data.defaultImageUrl
       this.setData({
         post: post
       })
@@ -467,12 +467,9 @@ Page({
     var getPostsRequest = wxRequest.getRequest(api.getBlogById(query));
     getPostsRequest.then(res => {
       var post = res.data.data;
-      var slug = post.icon + '.jpg'
       var time = post.create_time;
       post.created_at = time;
-      recentUrl = getApp().globalData.imageUrl + post.icon + '.jpg?' + getApp().globalData.imageStyle200To200;
-      post.slug = getApp().globalData.imageUrl + post.icon + '.jpg?' + getApp().globalData.imageStyle600To300;
-      post.like_count = 11;
+      recentUrl = post.icon;
 
 /*
       wxApi.getPostStatistics([post.id]).then(res => {
@@ -491,7 +488,6 @@ Page({
       */
       this.setData({
         post: post,
-        slug: slug
       });
       WxParse.wxParse('article', 'html', post.content, that, 5);
 
