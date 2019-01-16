@@ -91,12 +91,7 @@ Page({
 
       const posts = res.data.posts;
       for (var post of posts) {
-        var time = util.formatTime(post.created_at);
-        post.created_at = time;
         post.slug = app.globalData.imageUrl + post.slug + '.jpg?' + app.globalData.imageStyle600To300;
-        post.view_count = 100;
-        post.comment_count = 0;
-        post.like_count = 11;
       }
       this.setData({
         posts: this.data.posts.concat(posts),

@@ -21,7 +21,7 @@
         <view class="icon-author">
           <view class="zan-icon zan-icon-contact zan-pull-left zan-font-12 "> </view>
           <view class="zan-pull-left zan-font-12 ">
-            玄冰
+            {{post.user_info.nickname}}
           </view>
         </view>
         <view class="icon-created">

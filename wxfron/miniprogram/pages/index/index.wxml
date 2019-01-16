@@ -22,13 +22,13 @@
           <view class="icon-author">
             <view class="zan-icon zan-icon-contact zan-pull-left zan-font-12 "> </view>
             <view class="zan-pull-left zan-font-12 ">
-              玄冰
+              {{item.user_info.nickname}}
             </view>
           </view>
           <view class="icon-created">
             <view class="zan-icon zan-icon-clock zan-pull-left zan-font-12 "></view>
             <view class="zan-pull-left zan-font-12">
-              <text>{{item.created_at}}</text>
+              <text>{{item.create_time}}</text>
             </view>
           </view>
           <view class="icon-review">
@@ -46,7 +46,7 @@
           <view class="icon-like">
             <view class="zan-icon zan-icon-like zan-pull-left zan-font-12 "></view>
             <view class="zan-pull-left zan-font-12">
-              <text>{{item.like_count}}</text>
+              <text>{{item.zan_count}}</text>
             </view>
           </view>
         </view>
