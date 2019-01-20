@@ -17,7 +17,7 @@ const app = getApp();
 var recentUrl = '';
 let isFocusing = false;
 
-Page({
+Page({ 
 
   /**
    * 页面的初始数据
