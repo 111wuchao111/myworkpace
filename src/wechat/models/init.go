@@ -10,7 +10,7 @@ func init() {
 	orm.RegisterModel(new(ArticleClass), new(Article), new(User))
 	orm.RegisterDriver("mysql", orm.DRMySQL)
 
-	orm.RegisterDataBase("default", "mysql", "root:@/wechatapp?charset=utf8")
+	orm.RegisterDataBase("default", "mysql", "root:134woaini@tcp(211.149.182.211:3306)/wechatapp?charset=utf8")
 	if beego.BConfig.RunMode == "dev" {
 		orm.Debug = true
 	}
