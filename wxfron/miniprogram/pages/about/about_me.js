@@ -5,11 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    email:'cavincao2005@163.com',
-    wechat:'bug生活2048',
-    selfwechat:'wuxinxiake123',
-    github:'https://github.com/CavinCao',
-    weibo:'https://www.weibo.com/bug2048'
+    email:'314237418@qq.com',
+    selfwechat:'314237418',
+    github:'https://github.com/111wuchao111'
   },
 
   /**

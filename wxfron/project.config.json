@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.3.0",
 	"appid": "wx9b82b019e642a786",
-  "appserct":"f3ba024756aeec571ba9eea13e4dba6e",
+	"appserct": "fb97a7dc7f0dc3021f76d8a32663dbd9",
 	"projectname": "ghost_wechat_blog",
 	"isGameTourist": false,
 	"condition": {

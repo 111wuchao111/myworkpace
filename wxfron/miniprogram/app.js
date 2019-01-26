@@ -1,3 +1,4 @@
+
 App({
   onLaunch: function() {
     //调用API从本地缓存中获取数据
@@ -14,7 +15,41 @@ App({
       typeof cb == "function" && cb(that.globalData.userInfo, false);
     }
   },
+
+  setLoginInfo:function(){
+    var that = this
+    var userInfo ={}
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          wx.getUserInfo({
+            success: function (res) {
+              //var objz = {};
+              userInfo.avatarUrl = res.userInfo.avatarUrl;
+              userInfo.nickName = res.userInfo.nickName;
+            }
+          });
+          var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + that.globalData.appid + '&secret=' + that.globalData.appserct + '&js_code=' + res.code + '&grant_type=authorization_code';
+          wx.request({
+            url: l,
+            data: {},
+            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
+            // header: {}, // 设置请求的 header  
+            success: function (res) {
+              //var obj = {};
+              userInfo.openid = res.data.openid;
+              wx.setStorageSync('userInfo', userInfo);//存储openid 
+            }
+          });
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+        }
+      }
+    });
+  },
   globalData: {
+    appid: "wx9b82b019e642a786",
+    appserct: "fb97a7dc7f0dc3021f76d8a32663dbd9",
     openid: "",
     userInfo: null,
     //默认图片

@@ -1,4 +1,5 @@
-const apiURL = 'http://localhost:8081';
+const apiURL = 'http://localhost:80';
+//const apiURL = 'https://www.wuchao.shop';
 const clientId = 'ghost-frontend';
 const clientSecret = 'ed4c807905b8';
 

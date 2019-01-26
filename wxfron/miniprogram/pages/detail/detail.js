@@ -582,7 +582,13 @@ Page({
   bindGetUserInfo: function(e) {
     if (e.detail.userInfo) {
       app.globalData.userInfo = e.detail.userInfo
-      this.setData({
+
+
+    //设置openId
+    app.setLoginInfo()
+
+
+    this.setData({
         showPopup: !this.data.showPopup
       });
     } else {
