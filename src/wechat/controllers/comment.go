@@ -23,6 +23,6 @@ func (this *CommentController) Get() {
 
 //提交某个文章的评论
 func (this *CommentController) Post() {
-	this.Data["json"] = map[string]interface{}{"success": 0, "data": "dddd"}
+	this.Data["json"] = map[string]interface{}{"success": 0, "data": this.Ctx.Input.RequestBody}
 	this.ServeJSON()
 }
