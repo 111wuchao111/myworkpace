@@ -60,7 +60,7 @@
   <!--<view style=' background: #E0E3DA;width: 100%;height: 10rpx;'></view>
 <view class="zan-font-16" style='margin:20rpx 0 10rpx 20rpx;'>猜你喜欢</view>-->
 
-  <!--评论列表
+  <!--评论列表-->
   <view class='cut-off-line'></view>
   <view class='comment-list'>
     <view class="zan-font-16 comment-header">共{{post.comment_count}}条评论</view>
@@ -88,7 +88,7 @@
     <template is="zan-loadmore" data="{{ loading }}" />
     <template is="zan-loadmore" data="{{ nodata,nodata_str }}" />
     <template is="zan-loadmore" data="{{ nomore }}" />
-  </view> -->
+  </view> 
 </view>
 
 

@@ -9,4 +9,5 @@ import (
 func init() {
 	beego.Router("/", &controllers.ArticleController{}, "get:IndexList")
 	beego.Router("/detail/?:id", &controllers.ArticleController{}, "get:Detail")
+	beego.Router("/comment/?:id", &controllers.CommentController{}, "get:Get")
 }

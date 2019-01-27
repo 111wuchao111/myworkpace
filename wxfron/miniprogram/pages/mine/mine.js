@@ -53,9 +53,12 @@ Page({
 
   },
   bindGetUserInfo: function(e) {
-    console.log(e.detail.userInfo)
     if (e.detail.userInfo) {
       app.globalData.userInfo = e.detail.userInfo
+
+      //设置openId
+      app.setLoginInfo()
+
       console.log(1111)
       this.setData({
         showPopup: !this.data.showPopup,

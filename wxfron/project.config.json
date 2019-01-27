@@ -14,7 +14,7 @@
 	"libVersion": "2.3.0",
 	"appid": "wx9b82b019e642a786",
 	"appserct": "fb97a7dc7f0dc3021f76d8a32663dbd9",
-	"projectname": "ghost_wechat_blog",
+	"projectname": "wechat_small_blog",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

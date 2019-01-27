@@ -33,6 +33,14 @@ const wxRequest = (params, url) => {
 };
 
 /**
+ * 获取文章评论
+ */
+ const getBlogComments = (params)=>{
+   var url = `${apiURL}/comment/${params.blogId}?client_id=${clientId}&client_secret=${clientSecret}`;
+   return url
+ };
+
+/**
  * 分页获取文章列表url
  */
 const getBlogList = (params) => {
@@ -67,5 +75,6 @@ module.exports = {
   getBlogList,
   getBlogById,
   getBlogByTag,
-  getdownloadFileURL
+  getdownloadFileURL,
+  getBlogComments
 };

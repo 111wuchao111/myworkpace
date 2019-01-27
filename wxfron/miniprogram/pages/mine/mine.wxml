@@ -11,11 +11,6 @@
     <view class="zan-cell__bd">最近浏览</view>
     <view class="zan-cell__ft"></view>
   </view>
-  <view class="zan-cell zan-cell--access" bindtap="showCollected">
-    <view class="zan-cell__hd"></view>
-    <view class="zan-cell__bd">我的收藏</view>
-    <view class="zan-cell__ft"></view>
-  </view>
 </view>
 
 <view class="zan-panel">

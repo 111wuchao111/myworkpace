@@ -24,7 +24,6 @@ App({
         if (res.code) {
           wx.getUserInfo({
             success: function (res) {
-              //var objz = {};
               userInfo.avatarUrl = res.userInfo.avatarUrl;
               userInfo.nickName = res.userInfo.nickName;
             }
