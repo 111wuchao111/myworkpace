@@ -66,23 +66,14 @@
     <view class="zan-font-16 comment-header">共{{post.comment_count}}条评论</view>
     <block wx:key="id" wx:for="{{comments}}">
       <view class="zan-panel zan-panel--without-top-border">
-        <view id="{{item._id}}" data-id="{{item._id}}" data-name="{{item.cNickName}}" data-openid="{{item._openid}}" bindtap="focusComment">
+        <view id="{{item.id}}" data-id="{{item.id}}" data-name="{{item.user_nickname}}" data-openid="{{item.user_openid}}" bindtap="focusComment">
           <view class='comment-content'>
-            <image src="{{item.cAvatarUrl}}"></image>
-            <text class='zan-c-gray-darker zan-font-12' style='flex-basis:490rpx;margin-left:20rpx'>{{item.cNickName}}</text>
-            <text class='zan-c-gray-darker zan-font-12'>{{item.createDate}}</text>
+            <image src="{{item.user_headicon}}"></image>
+            <text class='zan-c-gray-darker zan-font-12' style='flex-basis:490rpx;margin-left:20rpx'>{{item.user_nickname}}</text>
+            <text class='zan-c-gray-darker zan-font-12'>{{item.create_time}}</text>
           </view>
-          <view class='zan-c-gray-darker zan-font-12 comment-detail'>{{item.comment}}</view>
+          <view class='zan-c-gray-darker zan-font-12 comment-detail'>{{item.content}}</view>
         </view>
-        <block wx:key="id" wx:for="{{item.childComment}}" wx:for-item="childItem">
-          <view style='padding-left:50rpx'>
-            <view class='comment-content' bindtap="focusComment" data-id="{{item._id}}" data-name="{{childItem.cNickName}}" data-openid="{{item._openid}}">
-              <image src="{{childItem.cAvatarUrl}}"></image>
-              <text class='zan-c-gray-darker zan-font-12 ' style='margin-left:20rpx'>{{childItem.cNickName}}回复{{childItem.tNickName}}</text>
-            </view>
-            <view class='zan-c-gray-darker zan-font-12 comment-detail'>{{childItem.comment}}</view>
-          </view>
-        </block>
       </view>
     </block>
     <template is="zan-loadmore" data="{{ loading }}" />
