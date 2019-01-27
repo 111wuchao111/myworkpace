@@ -103,12 +103,20 @@ Page({
     var getPostsRequest = wxRequest.getRequest(api.getBlogComments(query));
     getPostsRequest.then(res => {
       console.log(res.data.data)
-      that.setData({
-        comments: that.data.comments.concat(res.data.data),
-        isLastCommentPage: true,
-        nodata: true,
-        loading: false
-      })
+      if (res.data.data.length>0) {
+        that.setData({
+          comments: that.data.comments.concat(res.data.data),
+          isLastCommentPage: true,
+          nodata: false,
+          loading: false
+        })
+      } else {
+        that.setData({
+          isLastCommentPage: true,
+          nodata: true,
+          loading: false
+        })
+      }
     });
     /*
     wxApi.getPostsCommonts(that.data.post.id, that.data.commentsPage).then(res => {
