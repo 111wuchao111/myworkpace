@@ -63,6 +63,16 @@ const getBlogByTag = (params) => {
   wxRequest(params, `${apiURL}/posts?page=${params.query.page}&limit=${params.query.limit}&client_id=${clientId}&client_secret=${clientSecret}&filter=${params.query.filter}`);
 };
 
+
+
+/**
+ * 发表评论
+ */
+const submitComment = (params) => {
+  var url = `${apiURL}/submitComment/${params.blogId}?client_id=${clientId}&client_secret=${clientSecret}`;
+  return url;
+};
+
 /**
  * 下载头图文件
  */

@@ -118,35 +118,9 @@ Page({
         })
       }
     });
-    /*
-    wxApi.getPostsCommonts(that.data.post.id, that.data.commentsPage).then(res => {
-      console.log(res)
-      if (res.data.length > 0) {
-        that.setData({
-          comments: that.data.comments.concat(res.data),
-          commentsPage: that.data.commentsPage + 1,
-          loading: false
-        })
-      } else {
-        if (that.data.commentsPage === 1) {
-          that.setData({
-            isLastCommentPage: true,
-            nodata: true,
-            loading: false
-          })
-        } else {
-          that.setData({
-            isLastCommentPage: true,
-            nomore: true,
-            loading: false
-          })
-        }
-      }
-      console.log(that.data.nodata);
-    })
-    */
-
-
+  },
+  formSubmit: function (e) {
+    var comment = e.detail.value.inputComment;
   },
   /**
    * 发送按钮提交
@@ -317,7 +291,6 @@ Page({
 
       }
     }
-    console.log(isFocusing);
   },
   /**
    * 分享
