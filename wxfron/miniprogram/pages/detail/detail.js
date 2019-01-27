@@ -120,7 +120,18 @@ Page({
     });
   },
   formSubmit: function (e) {
+    let that = this
     var comment = e.detail.value.inputComment;
+    var data = {
+      blogId: that.data.post.id,
+      cNickName: app.globalData.userInfo.nickName,
+      cAvatarUrl: app.globalData.userInfo.avatarUrl,
+      comment: comment
+    }
+    var submitComment = wxRequest.postRequest(api.submitComment(data));
+    submitComment.then(res => {
+      console.log(res)
+    });
   },
   /**
    * 发送按钮提交

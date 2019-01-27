@@ -69,7 +69,7 @@ const getBlogByTag = (params) => {
  * 发表评论
  */
 const submitComment = (params) => {
-  var url = `${apiURL}/submitComment/${params.blogId}?client_id=${clientId}&client_secret=${clientSecret}`;
+  var url = `${apiURL}/submitComment`;
   return url;
 };
 
@@ -86,5 +86,6 @@ module.exports = {
   getBlogById,
   getBlogByTag,
   getdownloadFileURL,
-  getBlogComments
+  getBlogComments,
+  submitComment
 };
