@@ -28,6 +28,7 @@ func (this *CommentController) Post() {
 	o := orm.NewOrm()
 	var Comments []*models.Comments
 	var Comment models.Comments
+	var article models.Article
 	blogId, _ := this.GetInt("blogId")
 	Comment.ArticleId = blogId
 	Comment.UserOpenid = this.GetString("openId")
@@ -36,12 +37,16 @@ func (this *CommentController) Post() {
 	Comment.Content = this.GetString("comment")
 	Comment.CreateTime = time.Now().Format("2006-01-02")
 	beego.Info(Comment)
-	_, err := o.Insert(&Comment)
-	if err == nil {
-		o.QueryTable("article_comments").Filter("article_id", blogId).OrderBy("-create_time").All(&Comments)
-		this.Data["json"] = map[string]interface{}{"success": 0, "data": Comments}
-		this.ServeJSON()
+	o.Insert(&Comment)
+	article = models.Article{Id: blogId}
+	if o.Read(&article) == nil {
+		article.CommentCount = article.CommentCount + 1
+		if _, err := o.Update(&article); err == nil {
+			o.QueryTable("article_comments").Filter("article_id", blogId).OrderBy("-create_time").All(&Comments)
+			this.Data["json"] = map[string]interface{}{"success": 0, "data": Comments, "count": len(Comments)}
+			this.ServeJSON()
+		}
 	}
-	this.Data["json"] = map[string]interface{}{"success": -1, "data": "error"}
+	this.Data["json"] = map[string]interface{}{"success": -1, "data": "error", "count": 0}
 	this.ServeJSON()
 }

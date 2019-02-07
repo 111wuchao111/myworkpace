@@ -134,7 +134,9 @@ Page({
     }
     var submitComment = wxRequest.postRequest(api.submitComment(), data);
     submitComment.then(res => {
+      that.data.post.comment_count++
       that.setData({
+        post: that.data.post,
         comments: res.data.data,
         isLastCommentPage: true,
         nodata: false,
