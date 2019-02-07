@@ -53,10 +53,11 @@ function postRequest(url, data) {
     method: 'POST',
     data: data,
     header: {
-      "content-type": "application/json"
+      "Content-Type": "application/x-www-form-urlencoded"
     },
   })
 }
+
 
 module.exports = {
   postRequest: postRequest,

@@ -119,6 +119,9 @@ Page({
       }
     });
   },
+  /**
+   * 发送按钮提交
+   */
   formSubmit: function (e) {
     let that = this
     var comment = e.detail.value.inputComment;
@@ -126,11 +129,17 @@ Page({
       blogId: that.data.post.id,
       cNickName: app.globalData.userInfo.nickName,
       cAvatarUrl: app.globalData.userInfo.avatarUrl,
-      comment: comment
+      comment: comment,
+      openId: wx.getStorageSync('userInfo').openid
     }
-    var submitComment = wxRequest.postRequest(api.submitComment(data));
+    var submitComment = wxRequest.postRequest(api.submitComment(), data);
     submitComment.then(res => {
-      console.log(res)
+      that.setData({
+        comments: res.data.data,
+        isLastCommentPage: true,
+        nodata: false,
+        loading: false
+      })
     });
   },
   /**
