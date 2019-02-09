@@ -3,7 +3,9 @@
   <view class="zan-panel-title">关于我</view>
   <view class="zan-panel">
     <view class='zan-font-14' style="padding: 15px;">
-      <text>矗立在在互联网之田的稻草人【田间稻草人】
+      <text>
+      我是一枚矗立在在互联网之田的稻草人【田间稻草人】,非常感谢各位一直对我的支持和鼓励，
+      这是我小程序的第一版，欢迎大家提出宝贵意见，后续我会一直更新和持续优化。
       </text>
     </view>
   </view>

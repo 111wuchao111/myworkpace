@@ -20,7 +20,7 @@
   </view>
   <view class="zan-cell zan-cell--access" bindtap="showAboutMe">
     <view class="zan-cell__hd"></view>
-    <view class="zan-cell__bd">联系作者</view>
+    <view class="zan-cell__bd">关于作者</view>
     <view class="zan-cell__ft"></view>
   </view>
 </view>
