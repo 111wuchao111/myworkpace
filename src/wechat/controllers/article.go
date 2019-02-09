@@ -63,6 +63,8 @@ func (this *ArticleController) Detail() {
 	o := orm.NewOrm()
 	id := this.Ctx.Input.Param(":id")
 	o.QueryTable("article").RelatedSel().Filter("id", id).One(&article)
+	article.ViewCount++
+	o.Update(&article)
 	this.Data["json"] = map[string]interface{}{"success": 0, "data": article}
 
 	this.ServeJSON()

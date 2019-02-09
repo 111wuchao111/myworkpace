@@ -7,7 +7,7 @@
   5. 【解决】详情页底部设计，评论怎么接（ghost目前没有支持评论）
  **/
 
-//const Zan = require('../../dist/index');
+const Zan = require('../../dist/index');
 const WxParse = require('../../wxParse/wxParse.js');
 const util = require('../../utils/util.js');
 const api = require('../../utils/api.js');
@@ -17,7 +17,7 @@ const app = getApp();
 var recentUrl = '';
 let isFocusing = false;
 
-Page({ 
+Page(Object.assign({}, Zan.Toast, Zan.Dialog, {
 
   /**
    * 页面的初始数据
@@ -125,15 +125,26 @@ Page({
   formSubmit: function (e) {
     let that = this
     var comment = e.detail.value.inputComment;
+    if (!comment) {
+      that.showZanToast('评论内容不能为空');
+      return 
+    }
     var data = {
       blogId: that.data.post.id,
       cNickName: app.globalData.userInfo.nickName,
       cAvatarUrl: app.globalData.userInfo.avatarUrl,
       comment: comment,
-      openId: wx.getStorageSync('userInfo').openid
+      openId: wx.getStorageSync('userInfo').openid,
+      toName: that.data.toName,
+      toOpenId:that.data.toOpenId
     }
     var submitComment = wxRequest.postRequest(api.submitComment(), data);
     submitComment.then(res => {
+      if (!res.data.data) {
+        that.showZanToast('操作失败,稍后重试');
+        return
+      }
+      that.showZanToast('评论成功');
       that.data.post.comment_count++
       that.setData({
         post: that.data.post,
@@ -145,127 +156,6 @@ Page({
     });
   },
   /**
-   * 发送按钮提交
-   */
-  /*
-  formSubmit: function(e) {
-    var that = this
-    var comment = e.detail.value.inputComment;
-    if (comment ||comment.length === 0) {
-      return
-    }
-    var commentId = that.data.commentId
-    var toName = that.data.toName
-    var toOpenId = that.data.toOpenId
-    if (commentId === "") {
-      var data = {
-        postId: that.data.post.id,
-        cNickName: app.globalData.userInfo.nickName,
-        cAvatarUrl: app.globalData.userInfo.avatarUrl,
-        timestamp: new Date().getTime(),
-        createDate: util.formatTime(new Date()),
-        comment: comment,
-        childComment: [],
-        flag: 0
-      }
-      wxApi.insertPostsCommonts(data).then(res => {
-        console.info(res)
-        that.showZanToast('评论已提交');
-        return wxApi.upsertPostsStatistics([that.data.post.id, 0, 1, 0])
-      }).then(res => {
-
-        var post = that.data.post
-        post.comment_count = post.comment_count + 1;
-
-        that.setData({
-          comments: [],
-          commentsPage: 1,
-          isLastCommentPage: false,
-          toName: "",
-          commentId: "",
-          placeholder: "评论...",
-          commentContent: "",
-          post: post,
-          loading: true,
-          nodata: false,
-          nomore: false
-        })
-
-        return wxApi.getPostsCommonts(that.data.post.id, that.data.commentsPage)
-
-      }).then(res => {
-        if (res.data.length > 0) {
-          that.setData({
-            comments: that.data.comments.concat(res.data),
-            commentsPage: that.data.commentsPage + 1,
-            loading: false
-          })
-        } else {
-          that.setData({
-            isLastCommentPage: true,
-            nomore: true,
-            loading: false
-          })
-        }
-      })
-    } else {
-      var childData = [{
-        cOpenId: app.globalData.openid,
-        cNickName: app.globalData.userInfo.nickName,
-        cAvatarUrl: app.globalData.userInfo.avatarUrl,
-        timestamp: new Date().getTime(), //new Date(),
-        createDate: util.formatTime(new Date()),
-        comment: comment,
-        tNickName: toName,
-        tOpenId: toOpenId,
-        flag: 0
-      }]
-      console.info(commentId)
-      console.info(childData)
-      wxApi.pushChildrenCommonts(commentId, childData).then(res => {
-        console.info(res)
-        that.showZanToast('评论已提交');
-        return wxApi.upsertPostsStatistics([that.data.post.id, 0, 1, 0])
-      }).then(res => {
-
-        var post = that.data.post
-        post.comment_count = post.comment_count + 1;
-
-        that.setData({
-          comments: [],
-          commentsPage: 1,
-          isLastCommentPage: false,
-          toName: "",
-          commentId: "",
-          placeholder: "评论...",
-          commentContent: "",
-          post: post,
-          loading: true,
-          nodata: false,
-          nomore: false
-        })
-
-        return wxApi.getPostsCommonts(that.data.post.id, that.data.commentsPage)
-
-      }).then(res => {
-        if (res.data.length > 0) {
-          that.setData({
-            comments: that.data.comments.concat(res.data),
-            commentsPage: that.data.commentsPage + 1,
-            loading: false
-          })
-        } else {
-          that.setData({
-            isLastCommentPage: true,
-            nomore: true,
-            loading: false
-          })
-        }
-      })
-    }
-  },
-  */
-  /**
    * 点击评论内容回复
    */
   focusComment: function(e) {
@@ -275,6 +165,10 @@ Page({
     var openId = e.currentTarget.dataset.openid;
     isFocusing = true;
 
+    //自己不能回复自己
+    if (wx.getStorageSync('userInfo').openid == openId) {
+      return
+    }
     that.setData({
       commentId: commentId,
       placeholder: "回复" + name + ":",
@@ -307,7 +201,8 @@ Page({
           self.setData({
             commentId: "",
             placeholder: "评论...",
-            toName: ""
+            toName: "",
+            toOpenId:""
           });
         }
 
@@ -529,4 +424,4 @@ Page({
       urls: [this.data.showPosterImage],
     });
   },
-});
+}));

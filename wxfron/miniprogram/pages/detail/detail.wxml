@@ -42,12 +42,6 @@
             <text>{{post.comment_count}}</text>
           </view>
         </view>
-        <view class="icon-like">
-          <view class="zan-icon zan-icon-like zan-pull-left zan-font-12 "></view>
-          <view class="zan-pull-left zan-font-12">
-            <text>{{post.zan_count}}</text>
-          </view>
-        </view>
       </view>
     </view>
   </view>
@@ -69,8 +63,12 @@
         <view id="{{item.id}}" data-id="{{item.id}}" data-name="{{item.user_nickname}}" data-openid="{{item.user_openid}}" bindtap="focusComment">
           <view class='comment-content'>
             <image src="{{item.user_headicon}}"></image>
-            <text class='zan-c-gray-darker zan-font-12' style='flex-basis:490rpx;margin-left:20rpx'>{{item.user_nickname}}</text>
-            <text class='zan-c-gray-darker zan-font-12'>{{item.create_time}}</text>
+            <block wx:if="{{item.to_nickname}}">
+            <text class='zan-c-gray-darker zan-font-12' style='flex-basis:490rpx;margin-left:20rpx'>{{item.user_nickname}}回复{{item.user_nickname}}【{{item.create_time}}】</text>
+            </block>
+            <block wx:else>
+            <text class='zan-c-gray-darker zan-font-12' style='flex-basis:490rpx;margin-left:20rpx'>{{item.user_nickname}}【{{item.create_time}}】</text>
+            </block>
           </view>
           <view class='zan-c-gray-darker zan-font-12 comment-detail'>{{item.content}}</view>
         </view>

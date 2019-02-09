@@ -35,8 +35,9 @@ func (this *CommentController) Post() {
 	Comment.UserHeadicon = this.GetString("cAvatarUrl")
 	Comment.UserNickname = this.GetString("cNickName")
 	Comment.Content = this.GetString("comment")
-	Comment.CreateTime = time.Now().Format("2006-01-02")
-	beego.Info(Comment)
+	Comment.ToNickname = this.GetString("toName")
+	Comment.ToOpenid = this.GetString("toOpenId")
+	Comment.CreateTime = time.Now().Format("2006-01-02 15:04:05")
 	o.Insert(&Comment)
 	article = models.Article{Id: blogId}
 	if o.Read(&article) == nil {
@@ -47,6 +48,6 @@ func (this *CommentController) Post() {
 			this.ServeJSON()
 		}
 	}
-	this.Data["json"] = map[string]interface{}{"success": -1, "data": "error", "count": 0}
+	this.Data["json"] = map[string]interface{}{"success": -1, "data": nil, "count": 0}
 	this.ServeJSON()
 }
