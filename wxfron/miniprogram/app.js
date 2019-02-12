@@ -8,7 +8,7 @@ App({
   },
   checkUserInfo: function(cb) {
     let that = this
-    if (that.globalData.userInfo) {
+    if (that.globalData.userInfo && that.globalData.openid) {
       typeof cb == "function" && cb(that.globalData.userInfo, true);
     } else {
       console.log('no login')
@@ -28,15 +28,15 @@ App({
               userInfo.nickName = res.userInfo.nickName;
             }
           });
-          var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + that.globalData.appid + '&secret=' + that.globalData.appserct + '&js_code=' + res.code + '&grant_type=authorization_code';
+          var l = 'https://www.wuchao.shop/openId?appid=' + that.globalData.appid + '&secret=' + that.globalData.appserct + '&js_code=' + res.code;
           wx.request({
             url: l,
             data: {},
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
             // header: {}, // 设置请求的 header  
             success: function (res) {
-              //var obj = {};
-              userInfo.openid = res.data.openid;
+              userInfo.openid = res.data.data.openid;
+              that.globalData.openid = res.data.data.openid
               wx.setStorageSync('userInfo', userInfo);//存储openid 
             }
           });

@@ -60,6 +60,7 @@ Page(Object.assign({}, Zan.Toast, Zan.Dialog, {
     let that = this;
     // 1.授权验证
     app.checkUserInfo(function(userInfo, isLogin) {
+      console.log(isLogin)
       if (!isLogin) {
         /**wx.redirectTo({
           url: '../authorization/authorization?backType=' + blogId
@@ -67,7 +68,10 @@ Page(Object.assign({}, Zan.Toast, Zan.Dialog, {
         that.setData({
           showPopup: true
         })
-        return;
+      } else {
+        that.setData({
+          showPopup: false
+        })
       }
     })
     // 2.默认值初始化
@@ -163,6 +167,7 @@ Page(Object.assign({}, Zan.Toast, Zan.Dialog, {
     var name = e.currentTarget.dataset.name;
     var commentId = e.currentTarget.dataset.id;
     var openId = e.currentTarget.dataset.openid;
+    console.log(openId)
     isFocusing = true;
 
     //自己不能回复自己

@@ -3,7 +3,9 @@ const apiURL = 'https://www.wuchao.shop';
 const clientId = 'ghost-frontend';
 const clientSecret = 'ed4c807905b8';
 
-const downloadFileURL ='https://bug2048-1253706941.cos.ap-shanghai.myqcloud.com'
+const downloadFileURL ='https://www.wuchao.shop';
+
+const app = getApp();
 
 const wxRequest = (params, url) => {
   wx.request({
@@ -74,6 +76,14 @@ const submitComment = (params) => {
 };
 
 /**
+ * 获取openId
+ */
+const getOpenId=(params) => {
+  var url = `${apiURL}/openId?appid=${app.globalData.appid}&secret=${app.globalData.appserct}&js_code=${params.code}`;
+  return url;
+}
+
+/**
  * 下载头图文件
  */
 const getdownloadFileURL = (name) => {
@@ -87,5 +97,6 @@ module.exports = {
   getBlogByTag,
   getdownloadFileURL,
   getBlogComments,
-  submitComment
+  submitComment,
+  getOpenId
 };

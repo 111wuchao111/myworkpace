@@ -64,7 +64,7 @@
           <view class='comment-content'>
             <image src="{{item.user_headicon}}"></image>
             <block wx:if="{{item.to_nickname}}">
-            <text class='zan-c-gray-darker zan-font-12' style='flex-basis:490rpx;margin-left:20rpx'>{{item.user_nickname}}回复{{item.user_nickname}}【{{item.create_time}}】</text>
+            <text class='zan-c-gray-darker zan-font-12' style='flex-basis:490rpx;margin-left:20rpx'>{{item.user_nickname}} 回复 {{item.to_nickname}}【{{item.create_time}}】</text>
             </block>
             <block wx:else>
             <text class='zan-c-gray-darker zan-font-12' style='flex-basis:490rpx;margin-left:20rpx'>{{item.user_nickname}}【{{item.create_time}}】</text>
