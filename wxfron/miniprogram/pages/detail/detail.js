@@ -108,7 +108,7 @@ Page(Object.assign({}, Zan.Toast, Zan.Dialog, {
       console.log(res.data.data)
       if (res.data.data.length>0) {
         that.setData({
-          comments: that.data.comments.concat(res.data.data),
+          comments: res.data.data,
           isLastCommentPage: true,
           nodata: false,
           loading: false
