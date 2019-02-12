@@ -60,7 +60,6 @@ Page(Object.assign({}, Zan.Toast, Zan.Dialog, {
     let that = this;
     // 1.授权验证
     app.checkUserInfo(function(userInfo, isLogin) {
-      console.log(isLogin)
       if (!isLogin) {
         /**wx.redirectTo({
           url: '../authorization/authorization?backType=' + blogId
